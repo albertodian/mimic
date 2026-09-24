@@ -6,5 +6,5 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*.ts", "spike/**/*.ts"]
+  "include": ["src/**/*.ts", "spike/**/*.ts", "mimic.e2e.ts"]
 }

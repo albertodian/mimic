@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "spike": "tsx spike/run.ts"
+    "spike": "tsx spike/run.ts",
+    "mimic": "tsx src/run.ts"
   },
   "dependencies": {
     "playwright": "^1.63.0"

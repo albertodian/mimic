@@ -2,13 +2,15 @@
 
 ## Current milestone
 
-Milestone 3 — add the minimal `mimic.e2e.ts` test-file runner.
+Milestone 5 — run against a real React app.
 
 ## Completed
 
 - Repository initialized.
 - Milestone 1: local browser-finetuned Laya selected TYPE_TEXT, CLICK, and DONE against a real Chromium page.
 - Milestone 2: the same proof runs through the reusable `src/agent.ts` loop.
+- Milestone 3: `npm run mimic` loads and runs a goal from `mimic.e2e.ts`.
+- Milestone 4: `defineSuite()` expands explicit variables before browser execution.
 
 ## Blockers
 
@@ -16,4 +18,4 @@ Milestone 3 — add the minimal `mimic.e2e.ts` test-file runner.
 
 ## Next
 
-- Load one natural-language goal from `mimic.e2e.ts`.
+- Build and pass the React fixture without user-written selectors.
