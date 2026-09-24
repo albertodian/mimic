@@ -9,7 +9,7 @@
     "mimic": "tsx src/cli.ts run"
   },
   "bin": {
-    "mimic": "./dist/cli.js"
+    "mimic": "dist/cli.js"
   },
   "exports": {
     ".": "./dist/index.js"
