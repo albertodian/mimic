@@ -18,7 +18,7 @@ export async function init(cwd: string) {
   const { command, url } = defaults(scripts);
   const configPath = resolve(cwd, "mimic.e2e.ts");
   if (!existsSync(configPath)) {
-    await writeFile(configPath, `import { defineSuite } from "mimic-e2e";\n\nexport default defineSuite({\n  url: "${url}",\n  devServer: { command: "${command}", url: "${url}" },\n  variables: {},\n  tests: [\n    'Finish when "Welcome" appears.',\n  ],\n});\n`);
+    await writeFile(configPath, `import { defineSuite } from "@albertodian/mimic-e2e";\n\nexport default defineSuite({\n  url: "${url}",\n  devServer: { command: "${command}", url: "${url}" },\n  variables: {},\n  tests: [\n    'Finish when "Welcome" appears.',\n  ],\n});\n`);
     console.log("✓ Created mimic.e2e.ts");
   } else console.log("• mimic.e2e.ts already exists");
   if (!scripts.e2e) {

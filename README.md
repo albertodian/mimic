@@ -31,7 +31,7 @@ npx mimic init
 Edit the generated file with the page text that proves the task completed:
 
 ```ts
-import { defineSuite } from "mimic-e2e";
+import { defineSuite } from "@albertodian/mimic-e2e";
 
 export default defineSuite({
   url: "http://localhost:5173",
