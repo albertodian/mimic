@@ -1,17 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 180" role="img" aria-labelledby="title desc">
   <title id="title">Mimic</title>
-  <desc id="desc">A browser window with a mimicking sparkle</desc>
+  <desc id="desc">A pair of mirrored cursors forming the letter M</desc>
   <defs>
-    <linearGradient id="paint" x1="38" y1="34" x2="202" y2="207" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#8B5CF6"/>
-      <stop offset="1" stop-color="#EC4899"/>
+    <linearGradient id="violet" x1="64" y1="42" x2="292" y2="144" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A78BFA"/>
+      <stop offset="1" stop-color="#6D28D9"/>
+    </linearGradient>
+    <linearGradient id="lime" x1="106" y1="42" x2="246" y2="140" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D9F99D"/>
+      <stop offset="1" stop-color="#84CC16"/>
     </linearGradient>
   </defs>
-  <rect width="240" height="240" rx="56" fill="#111827"/>
-  <path d="M51 72c0-11.6 9.4-21 21-21h96c11.6 0 21 9.4 21 21v96c0 11.6-9.4 21-21 21H72c-11.6 0-21-9.4-21-21V72Z" fill="url(#paint)"/>
-  <path d="M51 92h138" stroke="#111827" stroke-width="10"/>
-  <circle cx="74" cy="72" r="5" fill="#111827"/>
-  <circle cx="92" cy="72" r="5" fill="#111827"/>
-  <path d="m86 132 23 22 45-48" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="14"/>
-  <path d="m180 40 4.5 12.5L197 57l-12.5 4.5L180 74l-4.5-12.5L163 57l12.5-4.5L180 40Z" fill="#FDE68A"/>
+  <rect width="360" height="180" rx="42" fill="#11111B"/>
+  <path d="m70 45 62 39-39 16 21 42L70 45Z" fill="url(#violet)"/>
+  <path d="m290 45-62 39 39 16-21 42 44-97Z" fill="url(#lime)"/>
+  <path d="m108 102 43 42 29-34 29 34 43-42" fill="none" stroke="#F8FAFC" stroke-linecap="round" stroke-linejoin="round" stroke-width="13"/>
+  <circle cx="75" cy="130" r="5" fill="#A78BFA"/>
+  <circle cx="94" cy="140" r="5" fill="#A78BFA" opacity=".55"/>
+  <circle cx="285" cy="130" r="5" fill="#D9F99D"/>
+  <circle cx="266" cy="140" r="5" fill="#D9F99D" opacity=".55"/>
 </svg>

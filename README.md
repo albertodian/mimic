@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/mimic-logo.svg" width="120" alt="Mimic logo">
+  <img src="./assets/mimic-logo.svg" width="180" alt="Mimic logo">
 </p>
 
 <h1 align="center">Mimic</h1>
