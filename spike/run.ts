@@ -1,7 +1,6 @@
 import { chromium } from "playwright";
-import { execute } from "./executor.js";
-import { LayaBrowserDecider } from "./laya.js";
-import { observe } from "./observer.js";
+import { runAgent } from "../src/agent.js";
+import { LayaBrowserDecider } from "../src/model.js";
 import { startDemoServer } from "./server.js";
 
 const goal = 'Search for Verona and finish when "Results for Verona" appears.';
@@ -14,21 +13,9 @@ const model = await LayaBrowserDecider.start();
 
 try {
   await page.goto(server.url);
-  for (let step = 1; step <= 5; step++) {
-    const state = await observe(page);
-    const decision = await model.decide(goal, state);
-    if (decision.operation === "DONE") {
-      if (!state.visibleText.includes("Results for Verona")) throw new Error("Laya finished before the requested result appeared");
-      console.log(`${step} → DONE\n\nPASS`);
-      process.exitCode = 0;
-      break;
-    }
-    if (!decision.candidate) throw new Error("Laya did not choose an element");
-    console.log(`${step} → ${decision.operation} ${JSON.stringify(decision.candidate.name)}`);
-    await execute(page, decision.candidate, decision.operation, decision.operation === "TYPE_TEXT" ? value : undefined);
-    await page.waitForTimeout(100);
-  }
-  if (process.exitCode !== 0) throw new Error("Maximum steps exceeded");
+  const steps = await runAgent(model, { page, goal, value, maxSteps: 5 });
+  for (const [index, step] of steps.entries()) console.log(`${index + 1} → ${step}`);
+  console.log(`${steps.length + 1} → DONE\n\nPASS`);
 } finally {
   await model.close();
   await browser.close();

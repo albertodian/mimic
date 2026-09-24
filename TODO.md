@@ -2,12 +2,13 @@
 
 ## Current milestone
 
-Milestone 2 — extract the spike into the reusable core agent loop.
+Milestone 3 — add the minimal `mimic.e2e.ts` test-file runner.
 
 ## Completed
 
 - Repository initialized.
 - Milestone 1: local browser-finetuned Laya selected TYPE_TEXT, CLICK, and DONE against a real Chromium page.
+- Milestone 2: the same proof runs through the reusable `src/agent.ts` loop.
 
 ## Blockers
 
@@ -15,4 +16,4 @@ Milestone 2 — extract the spike into the reusable core agent loop.
 
 ## Next
 
-- Move the spike loop into `src/` without changing its behaviour.
+- Load one natural-language goal from `mimic.e2e.ts`.
