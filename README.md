@@ -1,63 +1,138 @@
 # Mimic
 
-E2E tests written like user instructions.
+[![npm version](https://img.shields.io/npm/v/%40albertodian%2Fmimic-e2e?logo=npm&label=npm)](https://www.npmjs.com/package/@albertodian/mimic-e2e)
+[![license](https://img.shields.io/github/license/albertodian/mimic)](LICENSE)
+[![Node.js](https://img.shields.io/node/v/%40albertodian%2Fmimic-e2e)](https://nodejs.org/)
+
+**E2E tests written like user behaviour — not selectors.**
 
 ```ts
-export default [
-  'Search for {{city}} and finish when "Results for {{city}}" appears.',
-];
+'Search for {{city}} and finish when "Results for {{city}}" appears.'
 ```
 
-No user-written selectors or Playwright scripts. Mimic observes labelled browser controls, asks a local Laya browser model for the next action, and lets Playwright execute it.
+Mimic reads the accessible controls currently visible in the browser, lets a local Laya decision model choose the next valid action, and uses Playwright to carry it out. No cloud inference, no page objects, and no user-authored CSS or test-ID selectors.
 
-## Install
+> **Early alpha — v0.1.** Mimic is ready for short, labelled form flows. Read the [current scope](#current-scope) before relying on it in CI.
 
-Mimic uses Laya locally. On Apple Silicon, install its runtime once:
+## Quick start
+
+### 1. Install the local decision runtime
+
+Mimic currently targets Apple Silicon through the local Laya MLX runtime:
 
 ```bash
 uv tool install 'laya-browser-agent[mlx] @ git+https://github.com/ChenneyZhuang/laya-browser-agent.git'
 ```
 
-Install Mimic in the app you want to test, then install Chromium:
+### 2. Add Mimic to the app you want to test
 
 ```bash
-npm install -D /path/to/mimic-e2e-0.1.0.tgz
+npm install -D @albertodian/mimic-e2e
 npx playwright install chromium
+npx mimic doctor
 npx mimic init
 ```
 
-`mimic init` detects a common Vite/Angular dev command, adds `mimic.e2e.ts`, and adds `npm run e2e` when that script is free. It never overwrites either file.
+`mimic init` creates `mimic.e2e.ts` and adds `npm run e2e` when that script is free. Existing files and scripts are never overwritten.
 
-Edit the generated file with the page text that proves the task completed:
+### 3. Describe the behaviour
+
+Edit the generated `mimic.e2e.ts`:
 
 ```ts
 import { defineSuite } from "@albertodian/mimic-e2e";
 
 export default defineSuite({
   url: "http://localhost:5173",
-  devServer: { command: "npm run dev", url: "http://localhost:5173" },
-  variables: { city: "Verona" },
+  devServer: {
+    command: "npm run dev",
+    url: "http://localhost:5173",
+  },
+  variables: {
+    city: "Verona",
+  },
   tests: [
     'Search for {{city}} and finish when "Results for {{city}}" appears.',
   ],
 });
 ```
 
-Run it with:
+### 4. Run it
 
 ```bash
 npm run e2e
 ```
 
-Use `E2E_URL=https://preview.example.com npm run e2e` to test an existing deployment without starting a local server. `npx mimic doctor` verifies the local Laya runtime and Chromium.
-
-## 0.1 boundary
-
-This first package supports labelled text fields, buttons, explicit variables, and `finish when "…" appears`. React/Angular fixtures, selects, retries, traces, and CI are not included yet.
-
-## Local packaging check
+To test a preview or a running environment, skip the local dev server:
 
 ```bash
+E2E_URL=https://preview.example.com npm run e2e
+```
+
+## What happens during a run
+
+```text
+Natural-language goal
+        ↓
+Accessible page snapshot
+        ↓
+Local Laya picks operation + element index
+        ↓
+Playwright executes the browser action
+        ↓
+Visible completion text verifies success
+```
+
+Mimic sends the model a compact semantic view of the page: labelled text fields, buttons, current values, and visible text. It does not give the user a selector API, persist selectors into tests, or send page data to a hosted model.
+
+## Configuration reference
+
+| Field | Purpose |
+| --- | --- |
+| `url` | Base URL used when no `devServer.url` is provided. |
+| `devServer.command` | Command Mimic starts before a local run. |
+| `devServer.url` | URL Mimic waits for after starting the app. |
+| `variables` | Named text values referenced with `{{variable}}`. |
+| `tests` | Ordered natural-language browser goals. |
+
+Available commands:
+
+```bash
+mimic init                 # create the starter config
+mimic doctor               # check Laya and Chromium
+mimic run                  # run mimic.e2e.ts
+mimic run --headed         # show Chromium while it runs
+```
+
+## Current scope
+
+v0.1 supports:
+
+- labelled text fields;
+- buttons;
+- explicit variables;
+- a deterministic `finish when "…" appears` success condition;
+- local dev servers or an `E2E_URL` override.
+
+Not ready yet:
+
+- semantic mapping of multiple credentials to specific fields;
+- native/custom selects, date pickers, file uploads, iframes, or shadow DOM;
+- retries, screenshots, traces, and CI reporting;
+- full React and Angular example suites;
+- Linux/Windows runtime setup.
+
+## Development
+
+```bash
+npm install
 npm run build
+npm run spike
 npm pack
 ```
+
+The spike is a real Chromium proof: local Laya chooses `TYPE_TEXT`, `CLICK`, then `DONE` against a tiny accessible page.
+
+## License
+
+[MIT](LICENSE)
