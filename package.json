@@ -35,6 +35,7 @@
     "access": "public"
   },
   "files": [
+    "assets",
     "dist",
     "README.md",
     "LICENSE"

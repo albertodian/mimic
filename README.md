@@ -1,10 +1,16 @@
-# Mimic
+<p align="center">
+  <img src="./assets/mimic-logo.svg" width="120" alt="Mimic logo">
+</p>
 
-[![npm version](https://img.shields.io/npm/v/%40albertodian%2Fmimic-e2e?logo=npm&label=npm)](https://www.npmjs.com/package/@albertodian/mimic-e2e)
-[![license](https://img.shields.io/github/license/albertodian/mimic)](LICENSE)
-[![Node.js](https://img.shields.io/node/v/%40albertodian%2Fmimic-e2e)](https://nodejs.org/)
+<h1 align="center">Mimic</h1>
 
-**E2E tests written like user behaviour — not selectors.**
+<p align="center">
+  <a href="https://www.npmjs.com/package/@albertodian/mimic-e2e"><img src="https://img.shields.io/npm/v/%40albertodian%2Fmimic-e2e?logo=npm&label=npm" alt="npm version"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/albertodian/mimic" alt="MIT license"></a>
+  <a href="https://nodejs.org/"><img src="https://img.shields.io/node/v/%40albertodian%2Fmimic-e2e" alt="Node.js version"></a>
+</p>
+
+<p align="center"><strong>E2E tests written like user behaviour — not selectors.</strong></p>
 
 ```ts
 'Search for {{city}} and finish when "Results for {{city}}" appears.'

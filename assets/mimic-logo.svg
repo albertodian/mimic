@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">Mimic</title>
+  <desc id="desc">A browser window with a mimicking sparkle</desc>
+  <defs>
+    <linearGradient id="paint" x1="38" y1="34" x2="202" y2="207" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8B5CF6"/>
+      <stop offset="1" stop-color="#EC4899"/>
+    </linearGradient>
+  </defs>
+  <rect width="240" height="240" rx="56" fill="#111827"/>
+  <path d="M51 72c0-11.6 9.4-21 21-21h96c11.6 0 21 9.4 21 21v96c0 11.6-9.4 21-21 21H72c-11.6 0-21-9.4-21-21V72Z" fill="url(#paint)"/>
+  <path d="M51 92h138" stroke="#111827" stroke-width="10"/>
+  <circle cx="74" cy="72" r="5" fill="#111827"/>
+  <circle cx="92" cy="72" r="5" fill="#111827"/>
+  <path d="m86 132 23 22 45-48" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="14"/>
+  <path d="m180 40 4.5 12.5L197 57l-12.5 4.5L180 74l-4.5-12.5L163 57l12.5-4.5L180 40Z" fill="#FDE68A"/>
+</svg>
