@@ -1,18 +1,50 @@
 {
-  "name": "mimic-e2e",
-  "version": "0.0.0",
-  "private": true,
+  "name": "@albertodian/mimic-e2e",
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build",
     "spike": "tsx spike/run.ts",
-    "mimic": "tsx src/run.ts"
+    "mimic": "tsx src/cli.ts run"
   },
+  "bin": {
+    "mimic": "./dist/cli.js"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albertodian/mimic.git"
+  },
+  "bugs": {
+    "url": "https://github.com/albertodian/mimic/issues"
+  },
+  "homepage": "https://github.com/albertodian/mimic#readme",
+  "keywords": [
+    "e2e",
+    "playwright",
+    "testing",
+    "local-ai"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "dependencies": {
-    "playwright": "^1.63.0"
+    "playwright": "^1.63.0",
+    "tsx": "^4.20.6"
   },
   "devDependencies": {
     "@types/node": "^24.10.1",
-    "tsx": "^4.20.6",
     "typescript": "^5.9.3"
   }
 }

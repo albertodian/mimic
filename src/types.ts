@@ -29,6 +29,6 @@ export interface DecisionModel {
 export interface AgentOptions {
   page: Page;
   goal: string;
-  value?: string;
+  values?: string[];
   maxSteps?: number;
 }
